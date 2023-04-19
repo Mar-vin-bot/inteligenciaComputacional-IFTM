@@ -6,7 +6,7 @@ package perceptron_digitos;
 public class Validacao {
     
     
-    public double [] somatorio(int mat[][], double w[][]){
+    public double [] somatorio(int mat[][], double weight[][]){
         
         double yent[] = {0,0,0,0};  
         double entrada[] = new double[16];
@@ -19,7 +19,7 @@ public class Validacao {
             }        
         for(int j=0;j<16;j++){      //matriz W16 | 4
             for(int n=0;n<4;n++)
-                yent[n] = yent[n] + entrada[j]*w[j][n]; // calcula o yent para os valores de entrada
+                yent[n] = yent[n] + entrada[j]*weight[j][n]; // calcula o yent para os valores de entrada
         }            
         return yent;    //resultado do somatório da multiplicação das entradas "mat" pela matriz de pesos "w".
     }
@@ -38,7 +38,7 @@ public class Validacao {
         return f;
     }
   
-    public String teste(int mat[][], double w[][], double t[][], double limiar){
+    public String teste(int mat[][], double weight[][], double t[][], double limiar){
               
        double yent[] = somatorio(mat,w);
        double f[] = saida(yent,limiar);
