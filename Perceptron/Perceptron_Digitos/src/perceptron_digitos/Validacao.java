@@ -12,7 +12,7 @@ public class Validacao {
         double entrada[] = new double[16];
         int l=1;
         entrada[0]=1;
-        for(int i=0; i<5; i++)
+        for(int i=0; i<5; i++)  //matriz mat[5][3] para armazenar a imagens dos numeros 
             for(int j=0; j<3; j++){
                 entrada[l] = mat[i][j]; //joga os valores adicionados dentro da variavel entrada
                 l++;
@@ -69,3 +69,18 @@ public class Validacao {
             return "?";             
     }             
 }
+
+
+/*
+public String teste(int mat[][], double weight[][], double t[][], double limiar){
+    double yent[] = somatorio(mat, weight);
+    double f[] = saida(yent, limiar);
+
+    for (int i = 0; i < t.length; i++) {
+        if (f[0] == t[i][0] && f[1] == t[i][1] && f[2] == t[i][2] && f[3] == t[i][3]) {
+            return String.valueOf(i);
+        }
+    }
+    return "?";
+}
+*/
