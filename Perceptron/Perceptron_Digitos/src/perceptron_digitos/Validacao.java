@@ -17,17 +17,17 @@ public class Validacao {
                 entrada[l] = mat[i][j]; //joga os valores adicionados dentro da variavel entrada
                 l++;
             }        
-        for(int j=0;j<16;j++){
+        for(int j=0;j<16;j++){      //matriz W16 | 4
             for(int n=0;n<4;n++)
                 yent[n] = yent[n] + entrada[j]*w[j][n]; // calcula o yent para os valores de entrada
         }            
-        return yent;
+        return yent;    //resultado do somatório da multiplicação das entradas "mat" pela matriz de pesos "w".
     }
 
     public double [] saida(double yent[], double limiar){
         double f[]= new double [4];
         
-        for(int n=0;n<4;n++)
+        for(int n=0;n<4;n++)        //verifica se vetor de yent[] enquadra no LIMIAR (RETRUN VERTOR F[] 1, -1,0)
             if(yent[n] > limiar)
                f[n] = 1;
             else 
@@ -42,7 +42,9 @@ public class Validacao {
               
        double yent[] = somatorio(mat,w);
        double f[] = saida(yent,limiar);
-       
+        
+       //compara o vetor f[] com cada linha da matriz t[linha][coluna] 
+        
        if(f[0] == t[0][0] && f[1] == t[0][1] && f[2] == t[0][2] && f[3] == t[0][3])
            return "0";
        else if(f[0] == t[1][0] && f[1] == t[1][1] && f[2] == t[1][2] && f[3] == t[1][3])
