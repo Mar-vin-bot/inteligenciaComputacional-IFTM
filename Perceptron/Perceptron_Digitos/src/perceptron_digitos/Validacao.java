@@ -5,9 +5,6 @@ package perceptron_digitos;
  */
 public class Validacao {
     
-    public Validacao(){
-        
-    }
     
     public double [] somatorio(int mat[][], double w[][]){
         
@@ -21,8 +18,8 @@ public class Validacao {
                 l++;
             }        
         for(int j=0;j<16;j++){
-            for(int k=0;k<4;k++)
-                yent[k] = yent[k] + entrada[j]*w[j][k]; // calcula o yent para os valores de entrada
+            for(int n=0;n<4;n++)
+                yent[n] = yent[n] + entrada[j]*w[j][n]; // calcula o yent para os valores de entrada
         }            
         return yent;
     }
@@ -30,14 +27,14 @@ public class Validacao {
     public double [] saida(double yent[], double limiar){
         double f[]= new double [4];
         
-        for(int k=0;k<4;k++)
-            if(yent[k] > limiar)
-               f[k] = 1;
+        for(int n=0;n<4;n++)
+            if(yent[n] > limiar)
+               f[n] = 1;
             else 
-               if(yent[k] < -limiar)
-                  f[k] = -1;          
+               if(yent[n] < -limiar)
+                  f[n] = -1;          
                else
-                  f[k] = 0;
+                  f[n] = 0;
         return f;
     }
   
