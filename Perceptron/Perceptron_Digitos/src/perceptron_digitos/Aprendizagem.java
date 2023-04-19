@@ -1,13 +1,11 @@
 package perceptron_digitos;
-
 /**
  *
  * @author Clarimundo
  */
 public class Aprendizagem {
-
-    private double x[][] = { 
-        { 
+    
+    private double x[][]={ 
             { 1, 1, 1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, 1, 1 },
             { 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, 1, -1, 1, 1, 1 },
             { 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1 },
@@ -19,9 +17,9 @@ public class Aprendizagem {
             { 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1 }
     };
-
-    private double w[][] = new double[16][4];
-    private double t[][] = { 
+   
+    private double w[][]= new double [16][4];
+     private double t[][] = { 
             { -1, -1, -1, -1 },
             { -1, 1, -1, -1 },
             { -1, -1, 1, -1 },
@@ -32,25 +30,25 @@ public class Aprendizagem {
             { 1, -1, 1, -1 },
             { 1, 1, 1, -1 },
             { 1, 1, 1, 1 }
-    };
+    };       
     private int epocas;
-
-    public Aprendizagem() {
-        epocas = 0;
+        
+    public Aprendizagem(){  
+        epocas=0;
     }
-
-    public double[] getw() {
+    
+    public double [][] getw(){
         return w;
     }
-
-    public double[] gett() {
+    
+    public double [][] gett(){
         return t;
-    }
-
-    public int getepocas() {
+    }    
+    
+    public int getepocas(){
         return epocas;
     }
-
+    
     public double somatorio(int i, int n) {
         double yent = 0;
         for (int j = 0; j < 16; j++)
@@ -58,7 +56,7 @@ public class Aprendizagem {
         return yent;
     }
 
-    public double saida(double yent, double limiar) {
+       public double saida(double yent, double limiar) {
         double f;
 
         if (yent > limiar)
@@ -69,8 +67,8 @@ public class Aprendizagem {
             f = 0;
         return f;
     }
-
-    public void atualiza(double alfa, double f[]) {
+    
+    public void atualiza(double alfa, double f[]) { //atualiza os pesos
         for (int i = 0; i < 10; i++)
             for(int n = 0;  n< 4; n++)
                 for (int j = 0; j < 16; j++)
@@ -78,7 +76,7 @@ public class Aprendizagem {
     }
 
     public void algoritmo(double alfa, double limiar) {
-        double yent[4];
+        double yent[] = new double[4];
         double f[] = { 0, 0, 0, 0 };
         boolean mudou;
 
@@ -88,7 +86,7 @@ public class Aprendizagem {
         do {
             mudou = false;
             for (int i = 0; i < 10; i++) { // 10 padrões de entrada (digito 0) a (digito 9)
-              for( int n = 0; n < 4; n++){
+              for( int n = 0; n < 4; n++){  //passando por cada neuronio com suas entradas acima
                 yent[n] = somatorio(i, n);
                 f[n] = saida(yent[n], limiar);
               }
@@ -96,7 +94,7 @@ public class Aprendizagem {
                     mudou = true;
             }
             if (mudou == true)
-                atualiza(alfa, f[]);
+                atualiza(alfa, f);
             epocas++;
         } while (mudou == true);
     }
