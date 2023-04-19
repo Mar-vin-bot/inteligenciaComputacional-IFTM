@@ -68,8 +68,8 @@ public class Aprendizagem {
         return f;
     }
     
-    public void atualiza(double txAprend, double f[]) { //atualiza o
-        for (int i = 0; i < 10; i++)
+    public void atualiza(double txAprend, double f[]) { //atualiza o weight
+        //for (int i = 0; i < 10; i++)
             for(int n = 0;  n< 4; n++)
                 for (int j = 0; j < 16; j++)
                 weight[j][n] = weight[j][n] + txAprend * (t[i][n] - f[n]) * x[i][j];
@@ -91,12 +91,12 @@ public class Aprendizagem {
                 f[n] = saida(yent[n], limiar);
               }
   
-                if (f[0] != t[i][0] || f[1] != t[i][1] || f[2] != t[i][2] || f[3] != t[i][3] )
+                if (f[0] != t[i][0] || f[1] != t[i][1] || f[2] != t[i][2] || f[3] != t[i][3] )  //Verifica se a saída corresponde à saída esperada para o padrão de entrada
                     mudou = true;
                   }
             if (mudou == true)
-                atualiza(txAprend, f);
+                atualiza(txAprend, f);  //atualiza os pesos
             epocas++;
-        } while (mudou == true);
+        } while (mudou == true);    //if (f==t) sai do laço
     }
 }
